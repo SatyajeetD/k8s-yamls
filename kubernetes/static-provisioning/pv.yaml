@@ -1,0 +1,24 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: foovol
+  annotations:
+    pv.kubernetes.io/provisioned-by: pds.csi.paviliondata.com
+spec:
+  storageClassName: pvl-nvme-storage
+  persistentVolumeReclaimPolicy: Delete
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+  csi:
+    driver: pds.csi.paviliondata.com
+    fsType: ext4
+    volumeHandle: foovol
+    volumeAttributes:
+      pvlmgname: mk-mg
+      chassis: 172.25.50.41
+      chassis_api_version: "2.0"
+      uid: "operator"
+      pwd: "b30cfbf4765c76fba16840a6d692c03f6d0040da9705e7452db252b9a818031f"
+      noformat: "true"
