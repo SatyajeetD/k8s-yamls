@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  type: NodePort
+  ports:
+#Ports is a list hence the hyphen below
+  -  targetPort: 80
+ #Port is the only mandatory field
+     port: 80
+ #if not given a free port is picked up
+     nodePort: 30008
+  selector:
+    app: myapp1
+  
+  

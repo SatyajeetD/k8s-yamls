@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    environment: test
+spec:
+  template:
+  #Copy metadata and spec part of pod definition here
+    metadata:
+      name: ng1
+      labels:
+        app: mine
+        environment: test
+    spec:
+      containers:
+      - name: ng1
+        image: nginx
+  replicas: 4
+        
